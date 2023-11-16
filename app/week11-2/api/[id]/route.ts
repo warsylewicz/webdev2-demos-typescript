@@ -14,6 +14,10 @@ export async function GET(
   ];
   const user = users.find((user) => user.id === id);
 
+  if (!user) {
+    return new Response(null, { status: 404 });
+  }
+
   console.log(`fetch user ${id}`);
   return new Response(JSON.stringify(user), { status: 200 });
 }

@@ -1,7 +1,7 @@
-export default async function Page(): Promise<JSX.Element> {
+export default async function Page() {
   // fetch data from the API
-  const response: Response = await fetch("http://localhost:3000/week11-1/api");
-  const data: string = await response.text();
+  const response = await fetch("http://localhost:3000/week11-1/api");
+  const data = await response.text();
   console.log(response);
 
   return (
