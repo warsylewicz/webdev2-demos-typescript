@@ -3,6 +3,10 @@ GET http://localhost:3000/week11-2/api
 
 ###
 
+GET http://localhost:3000/week11-2/api/1
+
+###
+
 POST http://localhost:3000/week11-2/api HTTP/1.1
 content-type: application/json
 

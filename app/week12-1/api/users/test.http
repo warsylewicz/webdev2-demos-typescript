@@ -1,0 +1,66 @@
+
+POST http://localhost:3000/week12-1/api/users HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Abe",
+    "age": 20
+}
+
+###
+
+POST http://localhost:3000/week12-1/api/users HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Bob",
+    "age": 30
+}
+
+###
+
+POST http://localhost:3000/week12-1/api/users HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Carl",
+    "age": 25
+}
+
+###
+
+GET http://localhost:3000/week12-1/api/users
+
+###
+
+GET http://localhost:3000/week12-1/api/users/9
+
+###
+
+PUT http://localhost:3000/week12-1/api/users/9 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Bobby",
+    "age": 31
+}
+
+###
+
+PATCH http://localhost:3000/week12-1/api/users/9 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Bob Bobberson"
+}
+
+###
+
+DELETE http://localhost:3000/week12-1/api/users/9 HTTP/1.1
+
+###
+
+// Delete all users. You can use this to reset the database.
+// You probably don't want to do this in production.
+DELETE http://localhost:3000/week12-1/api/users HTTP/1.1
+
