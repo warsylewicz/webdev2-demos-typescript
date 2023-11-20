@@ -20,7 +20,7 @@ export async function POST(request: Request) {
   // create new user in database
   // INSERT INTO users (name, age) VALUES (${newUser.name}, ${newUser.age}) RETURNING *
   // update id based on returning result
-  newUser.id = 2;
+  newUser.id = 3;
 
   console.log(`create new user`);
   return new Response(JSON.stringify(newUser), { status: 201 });

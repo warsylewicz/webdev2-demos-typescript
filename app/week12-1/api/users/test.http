@@ -1,4 +1,11 @@
+// Create tables
+POST http://localhost:3000/week12-1/api/tables
 
+###
+
+###
+
+// Create user
 POST http://localhost:3000/week12-1/api/users HTTP/1.1
 content-type: application/json
 
@@ -9,6 +16,7 @@ content-type: application/json
 
 ###
 
+// Create user
 POST http://localhost:3000/week12-1/api/users HTTP/1.1
 content-type: application/json
 
@@ -19,6 +27,7 @@ content-type: application/json
 
 ###
 
+// Create user
 POST http://localhost:3000/week12-1/api/users HTTP/1.1
 content-type: application/json
 
@@ -29,14 +38,17 @@ content-type: application/json
 
 ###
 
+// Create users
 GET http://localhost:3000/week12-1/api/users
 
 ###
 
+// Get user by id
 GET http://localhost:3000/week12-1/api/users/9
 
 ###
 
+// Replace user by id
 PUT http://localhost:3000/week12-1/api/users/9 HTTP/1.1
 content-type: application/json
 
@@ -47,6 +59,7 @@ content-type: application/json
 
 ###
 
+// Update user by id
 PATCH http://localhost:3000/week12-1/api/users/9 HTTP/1.1
 content-type: application/json
 
@@ -56,11 +69,15 @@ content-type: application/json
 
 ###
 
+// Delete user by id
 DELETE http://localhost:3000/week12-1/api/users/9 HTTP/1.1
 
 ###
 
-// Delete all users. You can use this to reset the database.
-// You probably don't want to do this in production.
+// Delete all users
 DELETE http://localhost:3000/week12-1/api/users HTTP/1.1
 
+###
+
+// Drop all tables. You can use this to reset the database.
+DELETE http://localhost:3000/week12-1/api/tables HTTP/1.1

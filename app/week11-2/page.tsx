@@ -1,12 +1,10 @@
 import type { User } from "./types/index.d.ts";
 
-export default async function Page(): Promise<JSX.Element> {
+export default async function Page() {
   // /week11-2/api
   // GET
   async function fetchUsers() {
-    const response: Response = await fetch(
-      "http://localhost:3000/week11-2/api"
-    );
+    const response = await fetch("http://localhost:3000/week11-2/api");
     const users: User[] = await response.json();
 
     return users;
@@ -77,7 +75,6 @@ export default async function Page(): Promise<JSX.Element> {
         },
         body: JSON.stringify({
           name: "Bobby",
-          age: 31,
         }),
       }
     );

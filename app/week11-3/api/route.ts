@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
   // create new user in database
   // ...
-  newUserData.id = 2;
+  newUserData.id = 3;
 
   console.log(`create new user`);
   return new Response(JSON.stringify(newUser), { status: 201 });

@@ -2,29 +2,26 @@ function add(a: number, b: number) {
   return a + b;
 }
 
-const answer = add(3, 4);
+const answer = add(1, 2);
+console.log(answer);
+// 3
 
-// const answer2 = add("foo", "bar");
-// console.log(answer2); // foobar
+// const answer2 = add("hello ", "world");
+// console.log(answer2);
+// hello world
 
-// const answer3 = add(3, "3");
+const str = "hello";
+const num = 1;
+const bool = true;
 
-//
-
-let a = 5;
-let b = 6;
-let str = "foo";
-let bool = true;
-
-interface Person {
+interface User {
   name: string;
   age: number;
   address?: string;
 }
 
-let person: Person = {
-  name: "John",
-  age: 30,
+const obj: User = {
+  name: "Jack",
+  age: 32,
+  address: "calgary",
 };
-
-person.address = "foo";
