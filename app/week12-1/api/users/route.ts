@@ -1,4 +1,12 @@
 import { sql } from "@vercel/postgres";
+import { z } from "zod";
+
+const newUserSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+  age: z.number().min(0).max(120),
+  role: z.enum(["admin", "user"]),
+});
 
 // fetch list of users
 export async function GET() {
@@ -11,11 +19,14 @@ export async function GET() {
 
 // create a new user
 export async function POST(request: Request) {
-  const newUser = await request.json();
+  const newUserData = await request.json();
+
+  // validate user data
+  const newUser = newUserSchema.parse(newUserData);
 
   // create new user in database
   const { rows } =
-    await sql`INSERT INTO users (name, age) VALUES (${newUser.name}, ${newUser.age}) RETURNING *`;
+    await sql`INSERT INTO users (email, name, age, role) VALUES (${newUser.email}, ${newUser.name}, ${newUser.age}, ${newUser.role}) RETURNING *`;
   const user = rows[0];
 
   console.log(`create new user`);

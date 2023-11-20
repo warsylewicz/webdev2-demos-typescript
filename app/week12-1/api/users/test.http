@@ -10,8 +10,10 @@ POST http://localhost:3000/week12-1/api/users HTTP/1.1
 content-type: application/json
 
 {
+    "email": "cprg352+abe@gmail.com",
     "name": "Abe",
-    "age": 20
+    "age": 20,
+    "role": "admin"
 }
 
 ###
@@ -21,8 +23,10 @@ POST http://localhost:3000/week12-1/api/users HTTP/1.1
 content-type: application/json
 
 {
+    "email": "cprg352+bob@gmail.com",
     "name": "Bob",
-    "age": 30
+    "age": 30,
+    "role": "user"
 }
 
 ###
@@ -32,45 +36,49 @@ POST http://localhost:3000/week12-1/api/users HTTP/1.1
 content-type: application/json
 
 {
+    "email": "cprg352+carl@gmail.com",
     "name": "Carl",
-    "age": 25
+    "age": 25,
+    "role": "user"
 }
 
 ###
 
-// Create users
+// Get users
 GET http://localhost:3000/week12-1/api/users
 
 ###
 
 // Get user by id
-GET http://localhost:3000/week12-1/api/users/9
+GET http://localhost:3000/week12-1/api/users/2
 
 ###
 
 // Replace user by id
-PUT http://localhost:3000/week12-1/api/users/9 HTTP/1.1
+PUT http://localhost:3000/week12-1/api/users/2 HTTP/1.1
 content-type: application/json
 
 {
+    "email": "cprg352+bob@gmail.com",
     "name": "Bobby",
-    "age": 31
+    "age": 31,
+    "role": "user"
 }
 
 ###
 
 // Update user by id
-PATCH http://localhost:3000/week12-1/api/users/9 HTTP/1.1
+PATCH http://localhost:3000/week12-1/api/users/2 HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Bob Bobberson"
+    "role": "admin"
 }
 
 ###
 
 // Delete user by id
-DELETE http://localhost:3000/week12-1/api/users/9 HTTP/1.1
+DELETE http://localhost:3000/week12-1/api/users/2 HTTP/1.1
 
 ###
 
