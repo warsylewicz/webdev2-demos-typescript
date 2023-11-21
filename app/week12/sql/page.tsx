@@ -138,7 +138,9 @@ export default function DataTableDemo() {
 
   React.useEffect(() => {
     (async () => {
-      const response = await fetch("http://localhost:3000/week12-1/api/users");
+      const response = await fetch(
+        "http://localhost:3000/week12/sql/api/users"
+      );
       const data = await response.json();
 
       setData(data);
