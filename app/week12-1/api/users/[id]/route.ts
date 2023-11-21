@@ -1,29 +1,38 @@
-import { sql } from "@vercel/postgres";
+import { connect } from "@planetscale/database";
 import { z } from "zod";
+
+const config = {
+  host: process.env.DATABASE_HOST,
+  username: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+};
 
 const userSchema = z.object({
   email: z.string().email(),
   name: z.string(),
   age: z.number().min(0).max(120),
-  role: z.enum(["admin", "user"]),
-});
-
-const patchUserSchema = z.object({
-  email: z.string().email().optional(),
-  name: z.string().optional(),
-  age: z.number().min(0).max(120).optional(),
-  role: z.enum(["admin", "user"]).optional(),
+  role: z.enum(["ADMIN", "USER"]),
 });
 
 // fetch one user
 export async function GET(
   request: Request,
-  { params }: { params: { id: number } }
+  { params }: { params: { id: number | string } }
 ) {
-  const id: number = Number(params.id);
+  const conn = connect(config);
 
-  const result = await sql`SELECT * FROM users where id = ${id}`;
-  const user = result.rows[0];
+  // if id is "raw", return raw database result
+  // this is useful for debugging and testing
+  if (typeof params.id === "string" && params.id === "raw") {
+    const result = await conn.execute("SELECT * FROM users;");
+    return new Response(JSON.stringify(result), { status: 200 });
+  }
+
+  const id = Number(params.id);
+  const { rows } = await conn.execute("SELECT * FROM users WHERE id = ?;", [
+    id,
+  ]);
+  const user = rows[0];
 
   if (!user) {
     return new Response(null, { status: 404 });
@@ -37,47 +46,23 @@ export async function PUT(
   request: Request,
   { params }: { params: { id: number } }
 ) {
-  const userData = await request.json();
-  const user = userSchema.parse(userData);
+  const requestData = await request.json();
+  const parsedUser = userSchema.parse(requestData);
 
-  const id: number = Number(params.id);
+  const conn = connect(config);
+  const { rowsAffected } = await conn.execute(
+    "UPDATE users SET email = ?, name = ?, age = ?, role = ? WHERE id = ?;",
+    [
+      parsedUser.email,
+      parsedUser.name,
+      parsedUser.age,
+      parsedUser.role,
+      params.id,
+    ]
+  );
 
-  // update user in database
-  const result =
-    await sql`UPDATE users SET email = ${user.email}, name = ${user.name}, age = ${user.age}, role = ${user.role} WHERE id = ${id}`;
-  return new Response(null, { status: 204 });
-}
-
-// update partial information of a user
-export async function PATCH(
-  request: Request,
-  { params }: { params: { id: number } }
-) {
-  const id = Number(params.id);
-  const userData = await request.json();
-
-  // validate user data
-  const user = patchUserSchema.parse(userData);
-
-  if (user.email) {
-    const result =
-      await sql`UPDATE users SET email = ${user.email} WHERE id = ${id}`;
-  }
-
-  // not super efficient because we are updating the database twice
-  if (user.name) {
-    const result =
-      await sql`UPDATE users SET name = ${user.name} WHERE id = ${id}`;
-  }
-
-  if (user.age) {
-    const result =
-      await sql`UPDATE users SET age = ${user.age} WHERE id = ${id}`;
-  }
-
-  if (user.role) {
-    const result =
-      await sql`UPDATE users SET role = ${user.role} WHERE id = ${id}`;
+  if (rowsAffected === 0) {
+    return new Response(null, { status: 404 });
   }
 
   return new Response(null, { status: 204 });
@@ -88,9 +73,15 @@ export async function DELETE(
   request: Request,
   { params }: { params: { id: number } }
 ) {
-  const id = Number(params.id);
+  const conn = connect(config);
+  const { rowsAffected } = await conn.execute(
+    "DELETE FROM users WHERE id = ?;",
+    [params.id]
+  );
 
-  // delete user in database
-  const result = await sql`DELETE FROM users WHERE id = ${id}`;
+  if (rowsAffected === 0) {
+    return new Response(null, { status: 404 });
+  }
+
   return new Response(null, { status: 204 });
 }
