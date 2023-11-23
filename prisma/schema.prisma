@@ -8,6 +8,7 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model User {
@@ -16,9 +17,19 @@ model User {
   name      String
   age       Int
   role      Role     @default(USER)
+  posts     Post[]
 }
 
 enum Role {
   ADMIN
   USER
 }
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
+}
+

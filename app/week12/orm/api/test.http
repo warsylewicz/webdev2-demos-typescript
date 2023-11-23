@@ -79,6 +79,33 @@ DELETE http://localhost:3000/week12/orm/api/users/2 HTTP/1.1
 
 ###
 
+// Create post for user
+POST http://localhost:3000/week12/orm/api/users/1/posts HTTP/1.1
+content-type: application/json
+
+{
+    "title": "My first post",
+    "content": "This is my first post"
+}
+
+###
+
+// Get posts for user
+GET http://localhost:3000/week12/orm/api/users/1/posts
+
+###
+
+// Get post by id for user
+GET http://localhost:3000/week12/orm/api/users/1/posts/3
+
+###
+
+// Delete all posts for user
+DELETE http://localhost:3000/week12/orm/api/users/1/posts HTTP/1.1
+
+
+###
+
 // Delete all users
 DELETE http://localhost:3000/week12/orm/api/users HTTP/1.1
 

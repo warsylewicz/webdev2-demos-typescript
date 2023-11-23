@@ -20,9 +20,9 @@ const patchUserSchema = z.object({
 // fetch one user
 export async function GET(
   request: Request,
-  { params }: { params: { id: number } }
+  { params }: { params: { userId: number } }
 ) {
-  const id: number = Number(params.id);
+  const id: number = Number(params.userId);
 
   const user = await prisma.user.findUnique({ where: { id } });
 
@@ -36,12 +36,12 @@ export async function GET(
 // update all the information of a user
 export async function PUT(
   request: Request,
-  { params }: { params: { id: number } }
+  { params }: { params: { userId: number } }
 ) {
   const requestData = await request.json();
   const parsedUser = userSchema.parse(requestData);
 
-  const id: number = Number(params.id);
+  const id: number = Number(params.userId);
 
   const updatedUser = await prisma.user.update({
     where: { id },
@@ -54,12 +54,12 @@ export async function PUT(
 // update partial information of a user
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: number } }
+  { params }: { params: { userId: number } }
 ) {
   const requestData = await request.json();
   const parsedUser = patchUserSchema.parse(requestData);
 
-  const id = Number(params.id);
+  const id = Number(params.userId);
 
   const updatedUser = await prisma.user.update({
     where: { id },
@@ -72,9 +72,9 @@ export async function PATCH(
 // delete a user
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: number } }
+  { params }: { params: { userId: number } }
 ) {
-  const id = Number(params.id);
+  const id = Number(params.userId);
 
   const deletedUser = await prisma.user.delete({ where: { id } });
 
