@@ -13,7 +13,7 @@ export async function GET(
   request: Request,
   { params }: { params: { userId: number } }
 ) {
-  // fetch users from database
+  // fetch posts for user from database
   const userId = Number(params.userId);
   const posts = await prisma.user.findUnique({
     where: { id: userId },
@@ -21,7 +21,7 @@ export async function GET(
   });
 
   // or: const posts = await prisma.post.findMany({ where: { authorId: userId } });
-  // or: const posts = await prisma.user.findUnique({ where: { id: userId } }).posts();
+  // const posts2 = await prisma.user.findUnique({ where: { id: userId } }).posts();
   return new Response(JSON.stringify(posts), { status: 200 });
 }
 

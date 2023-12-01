@@ -80,7 +80,7 @@ DELETE http://localhost:3000/week-13/orm/api/users/2 HTTP/1.1
 ###
 
 // Create post for user
-POST http://localhost:3000/week-13/orm/api/users/1/posts HTTP/1.1
+POST http://localhost:3000/week-13/orm/api/users/4/posts HTTP/1.1
 content-type: application/json
 
 {
@@ -91,17 +91,17 @@ content-type: application/json
 ###
 
 // Get posts for user
-GET http://localhost:3000/week-13/orm/api/users/1/posts
+GET http://localhost:3000/week-13/orm/api/users/4/posts
 
 ###
 
 // Get post by id for user
-GET http://localhost:3000/week-13/orm/api/users/1/posts/3
+GET http://localhost:3000/week-13/orm/api/users/4/posts/2
 
 ###
 
 // Delete all posts for user
-DELETE http://localhost:3000/week-13/orm/api/users/1/posts HTTP/1.1
+DELETE http://localhost:3000/week-13/orm/api/users/4/posts HTTP/1.1
 
 
 ###
