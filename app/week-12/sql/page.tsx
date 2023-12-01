@@ -139,7 +139,7 @@ export default function DataTableDemo() {
   React.useEffect(() => {
     (async () => {
       const response = await fetch(
-        "http://localhost:3000/week12/sql/api/users"
+        "http://localhost:3000/week-12/sql/api/users"
       );
       const data = await response.json();
 

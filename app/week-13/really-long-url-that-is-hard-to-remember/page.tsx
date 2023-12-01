@@ -5,7 +5,7 @@ export default function Page() {
       <p>
         The URL for this page is really long and hard to remember. The
         middleware.tsx rewrites a shorter URL to this page. Try going to both
-        /week-13/really-long-url-that-is-hard-to-remember and /week13/short-url
+        /week-13/really-long-url-that-is-hard-to-remember and /week-13/short-url
         to see how it works.
       </p>
     </div>

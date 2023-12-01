@@ -1,6 +1,6 @@
 export default async function Page() {
   // fetch data from the API
-  const response = await fetch("http://localhost:3000/week11-1/api");
+  const response = await fetch("http://localhost:3000/week-11/part-1/api");
   const data = await response.text();
   console.log(response);
 

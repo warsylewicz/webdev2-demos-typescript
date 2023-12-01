@@ -1,10 +1,10 @@
 // Create tables
-POST http://localhost:3000/week12/sql/api/tables
+POST http://localhost:3000/week-12/sql/api/tables
 
 ###
 
 // Create user
-POST http://localhost:3000/week12/sql/api/users HTTP/1.1
+POST http://localhost:3000/week-12/sql/api/users HTTP/1.1
 content-type: application/json
 
 {
@@ -17,7 +17,7 @@ content-type: application/json
 ###
 
 // Create user
-POST http://localhost:3000/week12/sql/api/users HTTP/1.1
+POST http://localhost:3000/week-12/sql/api/users HTTP/1.1
 content-type: application/json
 
 {
@@ -30,7 +30,7 @@ content-type: application/json
 ###
 
 // Create user
-POST http://localhost:3000/week12/sql/api/users HTTP/1.1
+POST http://localhost:3000/week-12/sql/api/users HTTP/1.1
 content-type: application/json
 
 {
@@ -43,22 +43,22 @@ content-type: application/json
 ###
 
 // Get users
-GET http://localhost:3000/week12/sql/api/users
+GET http://localhost:3000/week-12/sql/api/users
 
 ###
 
 // Get all data returned returned from the query
-GET http://localhost:3000/week12/sql/api/users/raw
+GET http://localhost:3000/week-12/sql/api/users/raw
 
 ###
 
 // Get user by id
-GET http://localhost:3000/week12/sql/api/users/2
+GET http://localhost:3000/week-12/sql/api/users/2
 
 ###
 
 // Replace user by id
-PUT http://localhost:3000/week12/sql/api/users/2 HTTP/1.1
+PUT http://localhost:3000/week-12/sql/api/users/2 HTTP/1.1
 content-type: application/json
 
 {
@@ -71,14 +71,14 @@ content-type: application/json
 ###
 
 // Delete user by id
-DELETE http://localhost:3000/week12/sql/api/users/2 HTTP/1.1
+DELETE http://localhost:3000/week-12/sql/api/users/2 HTTP/1.1
 
 ###
 
 // Delete all users
-DELETE http://localhost:3000/week12/sql/api/users HTTP/1.1
+DELETE http://localhost:3000/week-12/sql/api/users HTTP/1.1
 
 ###
 
 // Drop all tables. You can use this to reset the database.
-DELETE http://localhost:3000/week12/sql/api/tables HTTP/1.1
+DELETE http://localhost:3000/week-12/sql/api/tables HTTP/1.1
