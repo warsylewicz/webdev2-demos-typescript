@@ -9,7 +9,7 @@ export function middleware(request: NextRequest) {
     );
   }
 
-  // Rewrite /really-long-url-that-is-hard-to-remember to /week13/short-url
+  // Rewrite /really-long-url-that-is-hard-to-remember to /week-13/short-url
   if (request.nextUrl.pathname === "/week-13/short-url") {
     return NextResponse.rewrite(
       new URL(

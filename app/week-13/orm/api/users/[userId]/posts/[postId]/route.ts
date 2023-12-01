@@ -10,13 +10,13 @@ export async function GET(
   const userId: number = Number(params.userId);
   const postId: number = Number(params.postId);
 
-  const user = await prisma.post.findUnique({
+  const post = await prisma.post.findUnique({
     where: { id: postId, authorId: userId },
   });
 
-  if (!user) {
+  if (!post) {
     return new Response(null, { status: 404 });
   }
 
-  return new Response(JSON.stringify(user), { status: 200 });
+  return new Response(JSON.stringify(post), { status: 200 });
 }
