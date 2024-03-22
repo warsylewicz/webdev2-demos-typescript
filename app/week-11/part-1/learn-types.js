@@ -1,8 +1,9 @@
-function add(a: number, b: number) {
+function add(a, b) {
   return a + b;
 }
 
 const answer = add(1, 2);
+
 console.log(answer);
 // 3
 
