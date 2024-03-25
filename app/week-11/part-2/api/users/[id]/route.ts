@@ -1,9 +1,9 @@
-import type { User } from "../../types/index.d.ts";
+import type { User } from "../../../types/index.d.ts";
 
 // fetch one user
 export async function GET(
   request: Request,
-  { params }: { params: { id: number } }
+  { params }: { params: { id: string } }
 ) {
   const id = Number(params.id);
 

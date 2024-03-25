@@ -4,7 +4,9 @@ export default async function Page() {
   // /week-11/part2/api
   // GET
   async function fetchUsers() {
-    const response = await fetch("http://localhost:3000/week-11/part-2/api");
+    const response = await fetch(
+      "http://localhost:3000/week-11/part-2/api/users"
+    );
     const users: User[] = await response.json();
 
     return users;
@@ -14,17 +16,19 @@ export default async function Page() {
 
   // POST
   async function createUser() {
+    const user = {
+      name: "Carl",
+      age: 25,
+    };
+
     const response: Response = await fetch(
-      "http://localhost:3000/week-11/part-2/api",
+      "http://localhost:3000/week-11/part-2/api/users",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: "Carl",
-          age: 25,
-        }),
+        body: JSON.stringify(user),
       }
     );
 
@@ -41,7 +45,7 @@ export default async function Page() {
   // PUT
   async function replaceUser() {
     const response: Response = await fetch(
-      "http://localhost:3000/week-11/part-2/api/1",
+      "http://localhost:3000/week-11/part-2/api/users/2",
       {
         method: "PUT",
         headers: {
@@ -67,7 +71,7 @@ export default async function Page() {
   // PATCH
   async function updateUser() {
     const response: Response = await fetch(
-      "http://localhost:3000/week-11/part-2/api/1",
+      "http://localhost:3000/week-11/part-2/api/users/2",
       {
         method: "PATCH",
         headers: {
@@ -92,7 +96,7 @@ export default async function Page() {
   // DELETE
   async function deleteUser() {
     const response: Response = await fetch(
-      "http://localhost:3000/week-11/part-2/api/1",
+      "http://localhost:3000/week-11/part-2/api/2",
       {
         method: "DELETE",
       }

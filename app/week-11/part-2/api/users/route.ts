@@ -1,4 +1,4 @@
-import type { User } from "../types/index.d.ts";
+import type { User } from "../../types/index.js";
 
 // fetch list of users
 export async function GET() {
