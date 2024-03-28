@@ -17,7 +17,7 @@ export async function POST() {
 
 export async function DELETE() {
   try {
-    const databaseUrl = process.env.DATABASE_URL || ""; // Set a default value if DATABASE_URL is undefined
+    const databaseUrl = process.env.DATABASE_URL || "";
     const sql = neon(databaseUrl);
     const result = await sql`DROP TABLE users;`;
     return Response.json({ result }, { status: 200 });
