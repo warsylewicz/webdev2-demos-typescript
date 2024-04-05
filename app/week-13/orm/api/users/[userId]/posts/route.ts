@@ -20,8 +20,10 @@ export async function GET(
     include: { posts: true },
   });
 
-  // or: const posts = await prisma.post.findMany({ where: { authorId: userId } });
-  // const posts2 = await prisma.user.findUnique({ where: { id: userId } }).posts();
+  // const posts = await prisma.post.findMany({ where: { authorId: userId } });
+  // const posts = await prisma.user
+  //   .findUnique({ where: { id: userId } })
+  //   .posts();
   return new Response(JSON.stringify(posts), { status: 200 });
 }
 
